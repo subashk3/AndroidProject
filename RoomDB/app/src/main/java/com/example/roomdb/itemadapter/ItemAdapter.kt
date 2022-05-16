@@ -66,7 +66,7 @@ class ItemAdapter(private val context: MainActivity, private val list: List<MyTa
                 }
             }
         }
-        notifyItemChanged(holder.adapterPosition)
+      //  notifyItemChanged(holder.adapterPosition)
     }
 
     private fun navigateEditPage(id: Int, firstName: String, lastName: String) {
