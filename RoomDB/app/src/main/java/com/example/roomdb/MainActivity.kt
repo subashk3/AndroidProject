@@ -1,8 +1,6 @@
 package com.example.roomdb
 
-
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +11,6 @@ import com.example.roomdb.itemadapter.ItemAdapter
 import com.example.roomdb.mydatabase.MyDataBase
 import com.example.roomdb.mydatabase.MyTable
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_list_card.*
 import kotlinx.coroutines.*
 import java.util.ArrayList
 
@@ -38,9 +35,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
-
+        Toast.makeText(this, "***** onResume  State *****", Toast.LENGTH_LONG).show()
     }
+
+
     //Set data Recycler View
     @SuppressLint("NotifyDataSetChanged")
     fun setDataList() {
@@ -62,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     // Insert function
     private fun insertDataFromDatabase() {
         val firstName = first_name.text.toString().trim()
@@ -98,6 +97,6 @@ class MainActivity : AppCompatActivity() {
     private fun resetInput() {
         first_name.text = null
         second_name.text = null
-      //  Toast.makeText(this, "Reset data", Toast.LENGTH_SHORT).show()
+        //  Toast.makeText(this, "Reset data", Toast.LENGTH_SHORT).show()
     }
 }
