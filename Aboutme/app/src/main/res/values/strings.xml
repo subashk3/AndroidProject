@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">About me</string>
+    <string-array name="my_array_list">
+        <item>Android</item>
+        <item>Java</item>
+        <item>C</item>
+        <item>C++</item>
+        <item>Python</item>
+        <item>JavaScript</item>
+    </string-array>
+</resources>

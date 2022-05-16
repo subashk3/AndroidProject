@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cover_background"
+    android:orientation="vertical"
+    tools:context=".SignUp">
+ww
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="20dp"
+        android:text="Sign In"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:autofillHints=""
+        android:background="@drawable/input_field"
+        android:drawablePadding="10dp"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textColor="@color/input_txt"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:autofillHints=""
+        android:background="@drawable/input_field"
+        android:drawablePadding="10dp"
+        android:hint="@string/enter_your_mail_id"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:textColor="@color/input_txt"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/password_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:autofillHints=""
+        android:background="@drawable/input_field"
+        android:drawablePadding="10dp"
+        android:hint="@string/enter_your_password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textColor="@color/input_txt"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/cfn_password_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:autofillHints=""
+        android:background="@drawable/input_field"
+        android:drawablePadding="10dp"
+        android:hint="Confirm password"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textColor="@color/input_txt"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Submit"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"/>
+
+
+</LinearLayout>

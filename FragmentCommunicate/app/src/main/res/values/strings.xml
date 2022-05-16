@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fragment Communicate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_name">Enter Your name?</string>
+    <string name="enter">Enter</string>
+    <string name="name_and_greeting">Name and Greeting</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Room DB</string>
+    <string name="enter_the_first_name">First Name</string>
+    <string name="enter_second_name">Second Name</string>
+    <string name="add">Add</string>
+    <string name="full_details">Full details</string>
+</resources>

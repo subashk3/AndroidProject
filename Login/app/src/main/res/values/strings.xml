@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="facebook">Chat Centre</string>
+    <string name="create_account">Create account</string>
+</resources>

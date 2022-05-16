@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Activity To Activity</string>
+    <string name="enter_first_name">Enter first Name</string>
+    <string name="enter_second_name">Enter Second Name</string>
+    <string name="enter">Enter</string>
+    <string name="test">Test</string>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+<!--    <string name="app_name">Application</string>-->
+    <string name="app_name">Counter</string>
+    <string name="check">Check</string>
+    <string name="hello_world">0</string>
+    <string name="press_here">Press Here</string>
+    <string name="reset">Reset</string>
+</resources>
