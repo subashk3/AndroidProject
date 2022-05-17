@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
 // Add data from the list
         add_button.setOnClickListener { this.insertDataFromDatabase() }
 
@@ -30,18 +31,18 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Recycler View function to show the list of data
-        setDataList()
+
     }
 
     override fun onResume() {
         super.onResume()
-        Toast.makeText(this, "***** onResume  State *****", Toast.LENGTH_LONG).show()
+        getDataList()
+        // Toast.makeText(this, "***** onResume  State *****", Toast.LENGTH_LONG).show()
     }
-
 
     //Set data Recycler View
     @SuppressLint("NotifyDataSetChanged")
-    fun setDataList() {
+    fun getDataList() {
         val myDataBase = MyDataBase.getInstance(this)
         val database = myDataBase?.tableDao()
         val itemAdapter = ItemAdapter(this, dataList)
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(this@MainActivity, "Successfully added", Toast.LENGTH_SHORT)
                         .show()
-                    setDataList()
+                    getDataList()
                 }
             }
             resetInput()
@@ -91,7 +92,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-
     }
 
     private fun resetInput() {

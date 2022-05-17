@@ -62,11 +62,11 @@ class ItemAdapter(private val context: MainActivity, private val list: List<MyTa
             CoroutineScope(Dispatchers.IO).launch {
                 database?.deleteUser(user.id)
                 withContext(Dispatchers.Main) {
-                    context.setDataList()
+                    context.getDataList()
                 }
             }
         }
-      //  notifyItemChanged(holder.adapterPosition)
+        //  notifyItemChanged(holder.adapterPosition)
     }
 
     private fun navigateEditPage(id: Int, firstName: String, lastName: String) {

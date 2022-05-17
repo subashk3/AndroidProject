@@ -42,7 +42,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/first_name" />
 
-
     <Button
         android:id="@+id/add_button"
         android:layout_width="wrap_content"

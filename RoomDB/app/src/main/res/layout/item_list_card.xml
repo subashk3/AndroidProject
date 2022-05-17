@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
-        android:text="Fname Lname"
+        android:text="@string/fname_lname"
         android:textSize="25sp"
         android:textColor="@color/black"/>
 
