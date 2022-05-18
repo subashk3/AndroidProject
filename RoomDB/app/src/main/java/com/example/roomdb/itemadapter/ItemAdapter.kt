@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class ItemAdapter(private val context: MainActivity, private val list: List<MyTable>) :
+class ItemAdapter(private val context: MainActivity, private val list: ArrayList<MyTable>) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
     private lateinit var editButton: ImageButton
     private lateinit var deleteButton: ImageButton
@@ -62,7 +62,10 @@ class ItemAdapter(private val context: MainActivity, private val list: List<MyTa
             CoroutineScope(Dispatchers.IO).launch {
                 database?.deleteUser(user.id)
                 withContext(Dispatchers.Main) {
-                    context.getDataList()
+                   // context.getDataList()
+                    list.remove(user)
+                    notifyItemRemoved(position)
+
                 }
             }
         }
@@ -78,8 +81,6 @@ class ItemAdapter(private val context: MainActivity, private val list: List<MyTa
         intent.putExtras(bundle)
         startActivity(context, intent, bundle)
     }
-
-
     override fun getItemCount(): Int {
         return list.size
     }

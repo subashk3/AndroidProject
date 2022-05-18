@@ -6,9 +6,18 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MyViewModel : ViewModel() {
+
     var counter = 0
+
     val currentCounter: MutableLiveData<Int> by lazy {
+
         MutableLiveData<Int>()
+    }
+
+
+    fun codeDemo(){
+
+
     }
 
 }
