@@ -1,12 +1,10 @@
 package com.example.roomdb
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdb.itemadapter.ItemAdapter
@@ -18,10 +16,9 @@ import java.util.ArrayList
 
 //const val REQUEST_CODE_RESULT: Int = 12
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ItemAdapter.MyTestInterface {
     private lateinit var recyclerView: RecyclerView
     private val dataList = ArrayList<MyTable>()
-    private var listPosition: Int = -1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,13 +34,16 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Recycler View function to show the list of data
+        getDataList()
+
 
     }
 
     override fun onResume() {
         super.onResume()
+
         getDataList()
-        // Toast.makeText(this, "***** onResume  State *****", Toast.LENGTH_LONG).show()
+//        Toast.makeText(this, "***** onResume  State *****", Toast.LENGTH_LONG).show()
     }
 
     //Set data Recycler View
@@ -51,6 +51,11 @@ class MainActivity : AppCompatActivity() {
     fun getDataList() {
         val myDataBase = MyDataBase.getInstance(this)
         val database = myDataBase?.tableDao()
+
+
+//        myDataBase?.tableDao()?.getAllData()?.observe(this) {
+//
+//        }
         val itemAdapter = ItemAdapter(this, dataList)
         CoroutineScope(Dispatchers.IO).launch {
             database?.getAllData()?.let {
@@ -99,15 +104,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /* Update only required field */
-
-
-
-
     private fun resetInput() {
         first_name.text = null
         second_name.text = null
         //  Toast.makeText(this, "Reset data", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onClickTest(position: Int) {
+        // (recyclerView.adapter as ItemAdapter).notifyItemChanged(position)
+        Toast.makeText(this,
+            "Your are enter the edit ${dataList[position].firstName} ${dataList[position].lastName}",
+            Toast.LENGTH_SHORT).show()
     }
 
 

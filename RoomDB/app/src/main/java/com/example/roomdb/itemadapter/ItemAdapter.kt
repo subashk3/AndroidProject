@@ -22,7 +22,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class ItemAdapter(private val context: MainActivity, private val list: ArrayList<MyTable>) :
+class ItemAdapter(
+    private val context: MainActivity,
+    private val list: ArrayList<MyTable>,
+
+) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
     private lateinit var editButton: ImageButton
     private lateinit var deleteButton: ImageButton
@@ -32,10 +36,15 @@ class ItemAdapter(private val context: MainActivity, private val list: ArrayList
         init {
             editButton = view.edit_button
             deleteButton = view.delete_button
+
+            view.card_view.setOnClickListener {
+                context.onClickTest(adapterPosition)
+            }
+
         }
 
         var firstName: TextView = view.tv_first_name
-//      var secondName = view.tv_second_name
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,15 +53,14 @@ class ItemAdapter(private val context: MainActivity, private val list: ArrayList
         )
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user: MyTable = list[position]
         holder.firstName.text = user.firstName + " " + user.lastName
 
         // Edit Button Actions
         editButton.setOnClickListener {
-            // Log.d("Test", "Edited for ${user.firstName}")
-            navigateEditPage(user, position)
+            navigateEditPage(user)
         }
 
         // Delete Button Actions
@@ -62,30 +70,30 @@ class ItemAdapter(private val context: MainActivity, private val list: ArrayList
             CoroutineScope(Dispatchers.IO).launch {
                 database?.deleteUser(user.id)
                 withContext(Dispatchers.Main) {
-                     context.getDataList()
-                   /* list.remove(user)
-                    notifyItemRemoved(position)*/
-
-
+                    context.getDataList()
                 }
             }
-        }
-        //  notifyItemChanged(holder.adapterPosition)
-    }
 
-    private fun navigateEditPage(userData: MyTable, pos: Int) {
+        }
+    }
+    private fun navigateEditPage(userData: MyTable) {
+
         val bundle = Bundle()
         val intent = Intent(context, EditActivity::class.java)
         bundle.putInt("id", userData.id)
-        bundle.putString("first", userData.firstName)
-        bundle.putString("last", userData.lastName)
-        bundle.putInt("position", pos)
+        // bundle.putInt("position", pos)
         intent.putExtras(bundle)
         startActivity(context, intent, bundle)
-    }
 
+    }
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    interface MyTestInterface {
+        fun onClickTest(position: Int)
+
+
     }
 }
 

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.roomdb.mydatabase.MyDataBase
-import com.example.roomdb.mydatabase.MyTable
 import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,18 +19,29 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
         bundle = intent.extras!!
-        edit_first_name.setText(bundle?.get("first").toString())
-        edit_second_name.setText(bundle?.get("last").toString())
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val editUser = MyDataBase.getInstance(this@EditActivity)?.tableDao()
+                ?.selectUserId(bundle.get("id") as Int)
+            withContext(Dispatchers.Main) {
+                val tempFirstName = editUser?.firstName.toString()
+                val tempSecondName = editUser?.lastName.toString()
+                edit_first_name.setText(tempFirstName)
+                edit_second_name.setText(tempSecondName)
+            }
+
+        }
+
 
         //Update user
         update_button.setOnClickListener {
-            updateUser(bundle?.get("id") as Int)
+            updateUser(bundle.get("id") as Int)
         }
     }
 
+
     private fun updateUser(id: Int) {
-        val myDataBase = MyDataBase.getInstance(this)
-        val dataBase = myDataBase?.tableDao()
+        val dataBase = MyDataBase.getInstance(this)?.tableDao()
         val editFirstName = edit_first_name.text.toString().trim()
         val editSecondName = edit_second_name.text.toString().trim()
         //var userData: MyTable?
@@ -41,13 +51,8 @@ class EditActivity : AppCompatActivity() {
                 editSecondName)
             //  userData = dataBase?.selectUserId(id)
             withContext(Dispatchers.Main) {
-
-                /*val intent = Intent(this@EditActivity, MainActivity::class.java)
-                startActivity(intent)*/
                 val intent = Intent(this@EditActivity, MainActivity::class.java)
-                intent.putExtra("position", bundle?.get("position").toString())
-                startActivityForResult(intent, 12)
-
+                startActivity(intent)
             }
         }
         clearData()
