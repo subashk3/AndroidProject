@@ -15,10 +15,11 @@ import kotlinx.coroutines.withContext
 
 class EditActivity : AppCompatActivity() {
     //   val testString = "Edit"
+    private lateinit var bundle: Bundle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
-        val bundle = intent.extras
+        bundle = intent.extras!!
         edit_first_name.setText(bundle?.get("first").toString())
         edit_second_name.setText(bundle?.get("last").toString())
 
@@ -33,18 +34,19 @@ class EditActivity : AppCompatActivity() {
         val dataBase = myDataBase?.tableDao()
         val editFirstName = edit_first_name.text.toString().trim()
         val editSecondName = edit_second_name.text.toString().trim()
-        var userData: MyTable?
+        //var userData: MyTable?
         CoroutineScope(Dispatchers.IO).launch {
             dataBase?.updateUser(id,
                 editFirstName,
                 editSecondName)
-            userData = dataBase?.selectUserId(id)
+            //  userData = dataBase?.selectUserId(id)
             withContext(Dispatchers.Main) {
 
                 /*val intent = Intent(this@EditActivity, MainActivity::class.java)
                 startActivity(intent)*/
-                val intent = Intent(this@EditActivity,MainActivity::class.java)
-                startActivity(intent)
+                val intent = Intent(this@EditActivity, MainActivity::class.java)
+                intent.putExtra("position", bundle?.get("position").toString())
+                startActivityForResult(intent, 12)
 
             }
         }

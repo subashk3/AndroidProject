@@ -16,12 +16,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import java.util.ArrayList
 
+//const val REQUEST_CODE_RESULT: Int = 12
+
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private val dataList = ArrayList<MyTable>()
-
-
-
+    private var listPosition: Int = -1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,6 +103,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
     private fun resetInput() {
         first_name.text = null
         second_name.text = null
@@ -110,5 +111,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
 }
+
