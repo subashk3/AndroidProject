@@ -52,7 +52,7 @@ class ItemAdapter(private val context: MainActivity, private val list: ArrayList
         // Edit Button Actions
         editButton.setOnClickListener {
             // Log.d("Test", "Edited for ${user.firstName}")
-            navigateEditPage(user.id, user.firstName, user.lastName)
+            navigateEditPage(user, position)
         }
 
         // Delete Button Actions
@@ -62,9 +62,10 @@ class ItemAdapter(private val context: MainActivity, private val list: ArrayList
             CoroutineScope(Dispatchers.IO).launch {
                 database?.deleteUser(user.id)
                 withContext(Dispatchers.Main) {
-                   // context.getDataList()
-                    list.remove(user)
-                    notifyItemRemoved(position)
+                     context.getDataList()
+                   /* list.remove(user)
+                    notifyItemRemoved(position)*/
+
 
                 }
             }
@@ -72,15 +73,17 @@ class ItemAdapter(private val context: MainActivity, private val list: ArrayList
         //  notifyItemChanged(holder.adapterPosition)
     }
 
-    private fun navigateEditPage(id: Int, firstName: String, lastName: String) {
+    private fun navigateEditPage(userData: MyTable, pos: Int) {
         val bundle = Bundle()
         val intent = Intent(context, EditActivity::class.java)
-        bundle.putString("id", id.toString())
-        bundle.putString("first", firstName)
-        bundle.putString("last", lastName)
+        bundle.putInt("id", userData.id)
+        bundle.putString("first", userData.firstName)
+        bundle.putString("last", userData.lastName)
+        bundle.putInt("position", pos)
         intent.putExtras(bundle)
         startActivity(context, intent, bundle)
     }
+
     override fun getItemCount(): Int {
         return list.size
     }

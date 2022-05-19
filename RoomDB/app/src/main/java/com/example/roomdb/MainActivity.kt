@@ -1,11 +1,12 @@
 package com.example.roomdb
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomdb.itemadapter.ItemAdapter
@@ -18,6 +19,10 @@ import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private val dataList = ArrayList<MyTable>()
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         //Recycler View function to show the list of data
 
-
     }
 
     override fun onResume() {
@@ -48,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         val myDataBase = MyDataBase.getInstance(this)
         val database = myDataBase?.tableDao()
         val itemAdapter = ItemAdapter(this, dataList)
-
         CoroutineScope(Dispatchers.IO).launch {
             database?.getAllData()?.let {
                 dataList.clear()
@@ -96,9 +99,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /* Update only required field */
+
+
+
     private fun resetInput() {
         first_name.text = null
         second_name.text = null
         //  Toast.makeText(this, "Reset data", Toast.LENGTH_SHORT).show()
     }
+
+
+
 }

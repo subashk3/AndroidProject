@@ -1,9 +1,11 @@
 package com.example.roomdb
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.roomdb.mydatabase.MyDataBase
+import com.example.roomdb.mydatabase.MyTable
 import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,22 +24,28 @@ class EditActivity : AppCompatActivity() {
 
         //Update user
         update_button.setOnClickListener {
-            updateUser(bundle?.get("id").toString().toInt())
+            updateUser(bundle?.get("id") as Int)
         }
     }
 
     private fun updateUser(id: Int) {
         val myDataBase = MyDataBase.getInstance(this)
         val dataBase = myDataBase?.tableDao()
-        var editFirstName = edit_first_name.text.toString().trim()
-        var editSecondName = edit_second_name.text.toString().trim()
+        val editFirstName = edit_first_name.text.toString().trim()
+        val editSecondName = edit_second_name.text.toString().trim()
+        var userData: MyTable?
         CoroutineScope(Dispatchers.IO).launch {
             dataBase?.updateUser(id,
                 editFirstName,
                 editSecondName)
+            userData = dataBase?.selectUserId(id)
             withContext(Dispatchers.Main) {
+
                 /*val intent = Intent(this@EditActivity, MainActivity::class.java)
                 startActivity(intent)*/
+                val intent = Intent(this@EditActivity,MainActivity::class.java)
+                startActivity(intent)
+
             }
         }
         clearData()
@@ -49,5 +57,7 @@ class EditActivity : AppCompatActivity() {
         edit_second_name.text = null
     }
 }
+
+
 
 
