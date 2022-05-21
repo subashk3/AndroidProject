@@ -31,8 +31,6 @@ class EditActivity : AppCompatActivity() {
             }
 
         }
-
-
         //Update user
         update_button.setOnClickListener {
             updateUser(bundle.get("id") as Int)
@@ -63,6 +61,7 @@ class EditActivity : AppCompatActivity() {
         edit_first_name.text = null
         edit_second_name.text = null
     }
+
 }
 
 
