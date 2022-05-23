@@ -5,35 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggle_button"
         android:layout_width="wrap_content"
-        app:singleSelection="true"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:singleSelection="true">
 
         <Button
             android:id="@+id/first_button"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/first" />
+            android:textAlignment="center"
+            app:icon="@drawable/ic_baseline_signal_wifi" />
 
         <Button
             android:id="@+id/second_button"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/second" />
+            app:icon="@drawable/ic_baseline_signal_wifi_off" />
 
         <Button
             android:id="@+id/third_button"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/third" />
+            app:icon="@drawable/ic_baseline_perm_scan_wifi" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:button="@drawable/check_item"
+        app:useMaterialThemeColors="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil
 import com.example.fragmentcommunicate.databinding.FragmentABinding
 
 class FragmentA : Fragment() {
+
     private lateinit var communicator: Communicator
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,9 +25,11 @@ class FragmentA : Fragment() {
             false
         )
         communicator = activity as Communicator
+
         binding.enterButton.setOnClickListener {
             communicator.pushData(binding.inputUser.text.toString())
         }
+
         return binding.root
     }
 

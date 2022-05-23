@@ -20,10 +20,10 @@ class FragmentB : Fragment() {
             container,
             false
         )
+
         inputString ="Welcome " + arguments?.getString("inputData").toString()+" ..!"
         secondBinding.outputText.text=inputString
-
-
         return secondBinding.root
+
     }
 }
