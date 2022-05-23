@@ -11,6 +11,7 @@ abstract class MyDataBase : RoomDatabase() {
     companion object {
         private var OBJECT: MyDataBase? = null
         fun getInstance(context: Context): MyDataBase? {
+
             if (OBJECT == null) {
                 OBJECT = Room.databaseBuilder(context, MyDataBase::class.java, "MyDataBase").build()
                 return OBJECT
