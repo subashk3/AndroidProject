@@ -2,5 +2,9 @@
     <string name="app_name">Contacts</string>
     <string name="back_button">Back button</string>
     <string name="add_button">Add button</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="save">Save</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

@@ -5,12 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import com.example.contacts.databinding.FragmentContactUpdateBinding
 
 
 class ContactUpdate : Fragment() {
+    private lateinit var binding: FragmentContactUpdateBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (requireActivity() as MainActivity).apply {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            invalidateOptionsMenu()  //Refresh menu
+        }
 
     }
 
@@ -20,12 +28,22 @@ class ContactUpdate : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_update, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_contact_update, container, false)
+
+
+
+
+
+        return binding.root
     }
 
-    override fun onStop() {
-        super.onStop()
-
+    override fun onDetach() { // detach the fragment
+        super.onDetach()
+        (requireActivity() as MainActivity).apply {
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            invalidateOptionsMenu()
+        }
     }
 
 }
