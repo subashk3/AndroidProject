@@ -7,20 +7,21 @@ import kotlin.random.nextInt
 
 class MyViewModel : ViewModel() {
     var counter = 0
-    var randomNumber: String? = null
+    var randomNumberValue = 0
+    val randomNumber: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val currentCounter: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
     }
 
 
-    fun getNumber(): String {
+    fun getNumber(): MutableLiveData<String>? {
         if (randomNumber == null) {
             generateNumber()
         }
-        return randomNumber.toString()
+        return randomNumber
     }
 
     fun generateNumber() {
-        randomNumber = Random.nextInt(1..10).toString()
+        randomNumber?.value = Random.nextInt(1..10).toString()
     }
 }

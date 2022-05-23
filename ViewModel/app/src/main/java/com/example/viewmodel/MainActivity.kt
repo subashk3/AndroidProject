@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.viewmodel.databinding.ActivityMainBinding
 import com.example.viewmodel.viewmodel.MyViewModel
@@ -26,10 +27,15 @@ class MainActivity : AppCompatActivity() {
 
         myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 
-        myViewModel.currentCounter.observe(this
-        ) { binding.textViewCount.text = it.toString() }
+        /*   myViewModel.currentCounter.observe(this
+           ) { binding.textViewCount.text = it.toString() }*/
+        myViewModel.currentCounter.observe(this) {
+            binding.textViewCount.text = it.toString()
+        }
+        myViewModel.randomNumber.observe(this, Observer<String> {
+            binding.randomNumber.text = it
+        })
 
-        binding.randomNumber.text = myViewModel.getNumber()
 
         binding.plusButton.setOnClickListener { incrementCounterValue() }
         binding.minusButton.setOnClickListener { decrementCounterValue() }
@@ -37,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         binding.resetButton.setOnClickListener {
             resetCounterValue()
             myViewModel.generateNumber()
-            binding.randomNumber.text = myViewModel.getNumber()
+            binding.randomNumber.text = myViewModel?.getNumber().toString()
         }
     }
 
