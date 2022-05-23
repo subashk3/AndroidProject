@@ -18,13 +18,14 @@ class ContactUpdate : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        activity?.actionBar?.hide()
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_contact_update, container, false)
     }
+
     override fun onStop() {
         super.onStop()
-        activity?.actionBar?.show()
+
     }
 
 }

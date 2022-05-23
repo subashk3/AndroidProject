@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.207" />
+        <entry key="app/src/main/res/drawable/editview_tv.xml" value="0.765216064453125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_local_phone.xml" value="0.207" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.324582338902148" />
         <entry key="app/src/main/res/layout/app_bar.xml" value="0.2564331054687501" />
         <entry key="app/src/main/res/layout/fragment_contact_list.xml" value="0.3383084577114428" />
-        <entry key="app/src/main/res/layout/fragment_contact_update.xml" value="0.32563405797101447" />
+        <entry key="app/src/main/res/layout/fragment_contact_update.xml" value="0.25713861725955417" />
         <entry key="app/src/main/res/menu/menu_bar.xml" value="0.3880208333333333" />
       </map>
     </option>
