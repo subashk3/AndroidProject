@@ -1,7 +1,6 @@
 package com.example.contacts
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,12 +24,12 @@ class ContactUpdate : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_contact_update, container, false)
         binding.saveContact.setOnClickListener {
-        Log.d("My","Saved ${binding.userName.text} ")
+
         }
         return binding.root
     }

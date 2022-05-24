@@ -10,7 +10,7 @@ abstract class ContactDataBase :
     RoomDatabase() {
 
     companion object {
-
+        @Volatile
         private var OBJECT: ContactDataBase? = null
 
         fun getTableObject(context: Context): ContactDataBase? {

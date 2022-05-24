@@ -2,13 +2,11 @@ package com.example.contacts
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.contacts.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val MY_TEST = "My Test"
 
     private lateinit var binding: ActivityMainBinding
     private var contactList = ContactList()
@@ -17,8 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
-        Log.d(MY_TEST, "onCreate Activity")
 
         supportFragmentManager.beginTransaction().replace(R.id.my_main_background, contactList)
             .commit()

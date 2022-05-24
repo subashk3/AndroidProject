@@ -14,4 +14,7 @@ interface ContactDao {
 
     @Query("DELETE FROM CONTACT WHERE ID=:id")
     fun deleteUser(id: Int)
+
+    @Query("DELETE FROM CONTACT")
+    fun deleteAllUsers()
 }
