@@ -4,26 +4,28 @@ package com.example.contacts.model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 
 import com.example.contacts.database.Contact
 import com.example.contacts.repository.ContactRepository
+import kotlinx.coroutines.launch
 
 
-class ContactViewModel(repository: ContactRepository) : ViewModel() {
+class ContactViewModel(private val repository: ContactRepository) : ViewModel() {
 
 
     val allContact: LiveData<List<Contact>> = repository.allContact
 
-    /**
-     * Launching a new coroutine to insert the data in a non-blocking way
-     */
 
-
+    /* Insert function */
+    fun insert(user: Contact) = viewModelScope.launch {
+        repository.insert(user)
+    }
 
 
 }
 
-class WordViewModelFactory(private val repository: ContactRepository) : ViewModelProvider.Factory {
+class ContactViewModelFactory(private val repository: ContactRepository) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ContactViewModel::class.java)) {

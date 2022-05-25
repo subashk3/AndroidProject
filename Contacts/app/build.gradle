@@ -52,6 +52,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
 
     implementation("androidx.room:room-runtime:$roomVersion")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+
     // annotationProcessor("androidx.room:room-compiler:$roomVersion")
     // kapt("androidx.room:room-compiler:$roomVersion")
 
