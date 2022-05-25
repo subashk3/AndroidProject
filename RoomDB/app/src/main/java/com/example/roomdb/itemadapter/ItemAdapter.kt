@@ -28,6 +28,7 @@ class ItemAdapter(
 
 ) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+
     private lateinit var editButton: ImageButton
     private lateinit var deleteButton: ImageButton
 
@@ -43,7 +44,7 @@ class ItemAdapter(
 
         }
 
-        var firstName: TextView = view.tv_first_name
+        var firstName = view.tv_first_name
 
     }
 
@@ -56,6 +57,7 @@ class ItemAdapter(
     @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user: MyTable = list[position]
+
         holder.firstName.text = user.firstName + " " + user.lastName
 
         // Edit Button Actions
@@ -92,8 +94,6 @@ class ItemAdapter(
 
     interface MyTestInterface {
         fun onClickTest(position: Int)
-
-
     }
 }
 
