@@ -9,7 +9,7 @@ interface ContactDao {
     @Delete
     fun delete(contact: Contact)
 
-    @Query("SELECT * FROM CONTACT")
+    @Query("SELECT * FROM CONTACT ORDER BY NAME ASC")
     fun getAllContact(): List<Contact>
 
     @Query("DELETE FROM CONTACT WHERE ID=:id")
