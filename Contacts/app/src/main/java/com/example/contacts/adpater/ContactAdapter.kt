@@ -14,17 +14,11 @@ import kotlinx.android.synthetic.main.contact_item.view.*
 
 class ContactAdapter(private val context: Context, private var list: ArrayList<Contact>) :
     RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
-
-
     inner class ContactViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         val logo = view.logo_text
         val contactName = view.contact_name
         val contactNumber = view.contact_number
-
-
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.contact_item, parent, false)
@@ -43,5 +37,4 @@ class ContactAdapter(private val context: Context, private var list: ArrayList<C
 
         return list.size
     }
-
 }
