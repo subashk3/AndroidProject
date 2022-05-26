@@ -1,17 +1,28 @@
 package com.example.contacts.repository
 
-import androidx.annotation.WorkerThread
-import androidx.lifecycle.LiveData
 import com.example.contacts.database.Contact
 import com.example.contacts.database.ContactDao
 
-class ContactRepository(private val contactDoa: ContactDao) {
+class ContactRepository(private val contactDao: ContactDao) {
+    val contact = contactDao.getAllContact()
 
-    val allContact: LiveData<List<Contact>> = contactDoa.getAllContact()
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun insert(user: Contact) {
-        contactDoa.insert(user)
+    suspend fun insert(contact: Contact): Long {
+        return contactDao.insert(contact)
+
     }
+
+    suspend fun update(contact: Contact): Int {
+        return contactDao.update(contact)
+    }
+
+    suspend fun delete(contact: Contact) {
+        return contactDao.delete(contact)
+    }
+
+    suspend fun deleteAll(): Int {
+        return contactDao.deleteAllUsers()
+    }
+
+
 }

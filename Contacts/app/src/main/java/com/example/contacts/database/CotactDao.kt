@@ -1,22 +1,25 @@
 package com.example.contacts.database
 
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 import androidx.room.*
 
 @Dao
 interface ContactDao {
     @Insert
-    fun insert(contact: Contact)
+    suspend fun insert(contact: Contact): Long
+
+    @Update
+    suspend fun update(contact: Contact): Int
 
     @Delete
-    fun delete(contact: Contact)
+    suspend fun delete(contact: Contact)
 
     @Query("SELECT * FROM CONTACT ORDER BY NAME ASC")
-    fun getAllContact(): LiveData<List<Contact>>
+    fun getAllContact(): Flow<List<Contact>>
 
     @Query("DELETE FROM CONTACT WHERE ID=:id")
-    fun deleteUser(id: Int)
+    suspend fun deleteUser(id: Int)
 
     @Query("DELETE FROM CONTACT")
-    fun deleteAllUsers()
+    suspend fun deleteAllUsers(): Int
 }
