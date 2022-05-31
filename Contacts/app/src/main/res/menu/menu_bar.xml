@@ -9,7 +9,10 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/delete_button"
-        android:title="Delete" />
+        android:title="@string/delete" />
+    <item
+        android:id="@+id/about"
+        android:title="@string/about" />
 
 
 </menu>

@@ -26,11 +26,9 @@ class MainActivity : AppCompatActivity(), ItemAdapter.MyTestInterface {
         setContentView(R.layout.activity_main)
 
         // Add data from the list
-
         add_button.setOnClickListener { this.insertDataFromDatabase() }
 
         recyclerView = recycler_id
-
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Recycler View function to show the list of data

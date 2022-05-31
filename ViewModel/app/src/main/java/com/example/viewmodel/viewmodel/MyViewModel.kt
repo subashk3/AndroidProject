@@ -8,7 +8,9 @@ import kotlin.random.nextInt
 class MyViewModel : ViewModel() {
     var counter = 0
     var randomNumberValue = 0
+
     val randomNumber: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+
     val currentCounter: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
     }

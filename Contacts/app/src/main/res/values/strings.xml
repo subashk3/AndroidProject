@@ -9,5 +9,8 @@
     <string name="first_and_last_name">First and Last Name</string>
     <string name="a">A</string>
     <string name="_91_7010373171">+91 9876543210</string>
+    <string name="delete">Delete All Contact</string>
+    <string name="about">About</string>
+    <string name="add">add</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

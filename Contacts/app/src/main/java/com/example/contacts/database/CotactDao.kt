@@ -1,10 +1,11 @@
 package com.example.contacts.database
 
-import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface ContactDao {
+
     @Insert
     suspend fun insert(contact: Contact): Long
 
@@ -15,11 +16,11 @@ interface ContactDao {
     suspend fun delete(contact: Contact)
 
     @Query("SELECT * FROM CONTACT ORDER BY NAME ASC")
-    fun getAllContact(): Flow<List<Contact>>
+    fun getAllContact(): LiveData<List<Contact>>
 
     @Query("DELETE FROM CONTACT WHERE ID=:id")
     suspend fun deleteUser(id: Int)
 
     @Query("DELETE FROM CONTACT")
-    suspend fun deleteAllUsers(): Int
+    fun deleteAllUsers(): Int
 }
