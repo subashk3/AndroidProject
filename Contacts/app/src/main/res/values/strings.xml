@@ -12,5 +12,8 @@
     <string name="delete">Delete All Contact</string>
     <string name="about">About</string>
     <string name="add">add</string>
+    <string name="dialog_start_game">Confirm to delete all?</string>
+    <string name="start">Confirm</string>
+    <string name="cancel">Cancel</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

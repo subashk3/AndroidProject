@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity(), ItemAdapter.MyTestInterface {
     //Set data Recycler View
     @SuppressLint("NotifyDataSetChanged")
     fun getDataList() {
+
         val myDataBase = MyDataBase.getInstance(this)
         val database = myDataBase?.tableDao()
 
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity(), ItemAdapter.MyTestInterface {
 //
 //        }
         val itemAdapter = ItemAdapter(this, dataList)
+
         CoroutineScope(Dispatchers.IO).launch {
             database?.getAllData()?.let {
                 dataList.clear()
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity(), ItemAdapter.MyTestInterface {
             val myTable = MyTable(0, firstName, secondName)
             val myDataBase = MyDataBase.getInstance(this)
             val database = myDataBase?.tableDao()
+
             GlobalScope.launch {
                 database?.insert(myTable)
                 withContext(Dispatchers.Main) {
