@@ -51,8 +51,7 @@ class MainActivity : AppCompatActivity() {
                 contactUpdate = ContactUpdate()
             }
             R.id.delete_button -> {
-                deleteAllContact()
-                Toast.makeText(this, "Delete button", Toast.LENGTH_SHORT).show()
+                confirmStartGame()
             }
             R.id.add_button -> {
 //                supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -66,15 +65,20 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-    private fun deleteAllContact() {
+
+    fun deleteAllContact() {
         val contactDao = ContactDataBase.getInstance(this)?.contactDao()
         CoroutineScope(Dispatchers.IO).launch {
             contactDao?.deleteAllUsers()
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@MainActivity, "Deleted All", Toast.LENGTH_SHORT).show()
             }
         }
 
+    }
+
+    fun confirmStartGame() {
+        val newFragment = StartGameDialogFragment()
+        newFragment.show(supportFragmentManager, "game")
     }
 
 
